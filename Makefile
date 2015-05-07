@@ -1,6 +1,8 @@
 CC=g++
-CFLAGS=-c -Wall -O3 -march=native -mtune=native -flto
-LFLAGS = -O3 -march=native -mtune=native -Wall -flto
+CFLAGS=-c -Wall -O3
+# -march=native -mtune=native -flto
+LFLAGS = -O3 -Wall #
+ -march=native -mtune=native  -flto
 all: peak_tool.o
 	$(CC) $(LFLAGS) peak_tool.o -o peak_tool
 
