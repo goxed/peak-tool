@@ -20,7 +20,8 @@ e) If your Linux system has < 20GB RAM please make sure you have ~25% of your RA
 
 Make sure you have g++ installed on your system
 
-usage:
+
+Usage:
 
 gunzip gencode.v19.annotation.gtf.gz 
 
