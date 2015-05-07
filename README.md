@@ -1,5 +1,5 @@
 # peak-tool
-1st commit v0.3
+1st commit v0.3 / 16GB RAM required
 
 Tool in c++ to parse the gencode database file and a list of ChIP-Seq peaks in bed file and report detailed promoter / intergenic occupancy.
 
