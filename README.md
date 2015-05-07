@@ -20,7 +20,7 @@ You can safely ignore rest of the columns which are used with co-chip peak files
 
 Notes:
 
-a) Make sure you have g++  / XCode (OS X) installed on your system
+a) Make sure you have g++ / clang installed on your system 
 
 b) Tested with MACS bed file (Output is more accurate if summit data is used)
 
