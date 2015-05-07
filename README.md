@@ -23,8 +23,7 @@ vim /etc/init/zram-config.conf
 > mem=$(((totalmem * 30/100 / ${NRDEVICES}) * 1024))
 
 
-Make sure you have g++ installed on your system
-
+f) Make sure you have g++  / XCode (OS X) installed on your system
 
 Usage:
 
