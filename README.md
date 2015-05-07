@@ -3,11 +3,15 @@
 
 Tool in c++ to parse the gencode database file and a list of ChIP-Seq peaks in bed file and report detailed promoter / intergenic occupancy.
 
-a) Tested with MACS bed file (more accurate if summit data is used)
+a) Tested with MACS bed file (Output is more accurate if summit data is used)
+b) Simplistic assumption of Promoter regions (-2kb - +0.5kb) (can be changed in the program)
 b) You can combine two bed files with bedtools and use the output with the co-ChIP version of this program
-c) If your system has < 24GB RAM please make sure you have ~25% of your RAM allocated as swap with ZRAM
+c) Works perfectly on a Macbook Pro Retina laptop with 16GB RAM and MAC OS X > (10.9.x).
+   The OS nicely compresses the index data-structures in memory.
 
-Use ZRAM on a system with 16GB RAM or use a system with >= 24 GB RAM to avoid swapping and unnecessary frustrations
+Linux specific 
+d) Use ZRAM on a Linux system with 16GB RAM or use a system with >= 20 GB RAM to avoid swapping and unnecessary frustrations
+e) If your Linux system has < 20GB RAM please make sure you have ~25% of your RAM allocated as swap with ZRAM
 
 Make sure you have g++ installed on your system
 
