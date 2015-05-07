@@ -413,7 +413,7 @@ lines.clear();
     cerr<<endl<<"Input should be a 10-column file with ERG peaks (summit location) in the 1st 5 columns and"<< \
 		" co-occupying EZH2 peaks (summit location) in the next 5 columns"<< endl << \
 		"chr1    762714  762715  MACS_peak_7     439.21  chr1    763119  763120  MACS_peak_1     58.87";
-    peakFileName="ERG_peaks_with_EZH2_in_vicinity.500.txt";
+    peakFileName="test.bed";
   }
   ifstream::pos_type fileSize=get_file_size(peakFileName);
   cerr<<endl<<"Using input file"<<peakFileName;
