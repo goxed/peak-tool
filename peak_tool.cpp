@@ -147,8 +147,10 @@ struct feature_bitmaps{
 
 struct feature_maps{
   unsigned chrNum;
-  vector<unsigned short int>featureMapChromosome; //use only if number of data points per chromosome<=65535
-  //vector<unsigned>featureMapChromosome; //use only if number of data points per chromosome <=65535
+  vector<unsigned short int>featureMapChromosome; 
+  //use only if number of annotated regions  per chromosome <=65535
+  // (usually it is ~13K in the largest human chromosomes)
+  //vector<unsigned>featureMapChromosome; 
 };
 
 
