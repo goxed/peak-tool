@@ -16,7 +16,12 @@ Linux specific
 
 d) Use ZRAM on a Linux system with 16GB RAM or use a system with >= 20 GB RAM to avoid swapping and unnecessary frustrations
 
-e) If your Linux system has < 20GB RAM please make sure you have ~25% of your RAM allocated as swap with ZRAM
+e) If your Linux system has < 20GB RAM please make sure you have ~30% of your RAM allocated as swap with ZRAM
+
+edit the following file in Ubuntu Linux
+vim /etc/init/zram-config.conf
+> mem=$(((totalmem * 30/100 / ${NRDEVICES}) * 1024))
+
 
 Make sure you have g++ installed on your system
 
