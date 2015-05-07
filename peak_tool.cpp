@@ -150,6 +150,7 @@ struct feature_maps{
   vector<unsigned short int>featureMapChromosome; 
   //use only if number of annotated regions  per chromosome <=65535
   // (usually it is ~13K in the largest human chromosomes)
+  //cerr<<endl<<sizeof(unsigned short int);/*WAITUSER*/
   //vector<unsigned>featureMapChromosome; 
 };
 
@@ -191,7 +192,6 @@ int main (int argc, char *argv[]){
     return 0;
   }
   cerr<<"Gencode annotations file size="<<fileSize/1e9<<" Gigabytes";
-  //cerr<<endl<<sizeof(unsigned short int);/*WAITUSER*/
   ifstream gencodeFile;
   gencodeFile.open(gencodeFileName.c_str());
   string line;
