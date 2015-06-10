@@ -13,7 +13,7 @@ make ./peak_tool
 
 Output: The output is in the following format
 
-chrnum peak_mid peak_name peak_score peak_location gene_name strand isomer_name isomer_coding_type tss dist_tss
+chrnum peak_mid peak_name peak_score peak_location gene_name strand isoform isoform_coding_type tss dist_tss
 
 You can safely ignore rest of the columns which are used with co-chip peak files
 
