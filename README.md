@@ -22,7 +22,7 @@ Notes:
 
 a) Make sure you have g++ / clang installed on your system 
 
-b) Tested with MACS bed file (Output is more accurate if summit data is used)
+b) Tested with MACS bed file (Peak summit is preferable)
 
 c) Simplistic assumption of Promoter regions (-2kb - +0.5kb) (can be changed in the program)
 
