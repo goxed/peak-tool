@@ -7,7 +7,9 @@ Tool in c++ to parse the gencode database file and a list of ChIP-Seq peaks in b
 Compiling::
 
 >gunzip gencode.v19.annotation.gtf.gz 
+
 >gunzip enhancers.bed.gz 
+
 >make  
 
 Running::
