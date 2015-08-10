@@ -1,7 +1,9 @@
 # peak-tool and peak-tool-multi
 
 2nd commit v0.5 Beta 
+
 20GB RAM required on Linux 
+
 16GB RAM required on MAC OS X >= 10.9
 
 Tool in c++ to parse the gencode database file and a list of ChIP-Seq peaks in bed file and report detailed promoter / intergenic occupancy.
