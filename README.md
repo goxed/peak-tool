@@ -8,7 +8,7 @@
 
 Tool in c++ to parse the gencode annotation data file and list of ChIP-Seq peaks in bed file format.
 Report detailed promoter / gene-body / intergenic / enhancer occupancy. 
-Multi peak version of the tool reports neighboring peaks in order to elicit co-acting transcription factors. (It behaves exactly as peak-tool when a single list of peaks is given)
+Multi peak version of the tool reports neighboring peaks in order to elicit co-acting transcription factors. (Multi-peak behaves exactly as peak-tool when a single list of peaks is given)
 
 Compiling::
 
