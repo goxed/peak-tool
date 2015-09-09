@@ -1,14 +1,13 @@
-# peak-tool and peak-tool-multi
-
-2nd commit v0.5 Beta 
+#peak-tool-multi 
+Tool to annotate human hg19 and mouse mm10 aligned ChIP-Seq peak files. This tool also takes multiple ChIP-Seq peak files from different experiments and finds neighbors of the primary peak file and annotate it.
 
 20GB RAM required on Linux 
 
 16GB RAM required on MAC OS X >= 10.9
 
-Tool in c++ to parse the gencode annotation data file and list of ChIP-Seq peaks in bed file format.
-Report detailed promoter / gene-body / intergenic / enhancer occupancy. 
-Multi peak version of the tool reports neighboring peaks in order to elicit co-acting transcription factors. (Multi-peak behaves exactly as peak-tool when a single list of peaks is given)
+This is a tool in c++ to parse the gencode annotation database file and list(s) of ChIP-Seq peaks in bed file format.
+Report detailed promoter / gene-body / intergenic / enhancer occupancy in human or mouse. 
+Multi peak option reports neighboring peaks in order to elicit co-acting transcription factors. For e.g. With this feature you can correlate your peaks with ENCODE ChIP-Seq data or a related ChIP-Seq data.
 
 Compiling::
 
@@ -21,7 +20,7 @@ Compiling::
 Running::
 
 Example1:
-./peak_tool ./test.bed > test.genes.txt
+./peak_tool_multi ./test.bed > test.genes.txt
 -------------------------------------------------
 
 chr1	1778750	1778751	MACS_peak_51	102.12
@@ -104,8 +103,10 @@ e) Works perfectly on a Macbook Pro Retina laptop with 16GB RAM and MAC OS X > (
 Linux specific notes
 
 f) Use ZRAM on a Linux system with 16GB RAM or use a system with >= 20 GB RAM to avoid swapping and unnecessary frustrations
+http://askubuntu.com/questions/174579/how-do-i-use-zram
 
-g) If your Linux system has < 20GB RAM please make sure you have ~30% of your RAM allocated as swap with ZRAM
+g) If your Linux system has < 20GB RAM please make sure you have ~30%-50% of your RAM allocated as swap with ZRAM
+
 
 edit the following zram config file in Ubuntu Linux
 vim /etc/init/zram-config.conf
