@@ -22,6 +22,7 @@ Running::
 Example1:
 ./peak_tool_multi ./test.bed > test.genes.txt
 -------------------------------------------------
+Example Input in BED format
 
 chr1	1778750	1778751	MACS_peak_51	102.12
 
@@ -44,9 +45,9 @@ chr1	8319346	8319347	MACS_peak_195	3100.00
 chr1	8360245	8360246	MACS_peak_198	261.50
 
 The output is in the following format
-
+-------------------------------------------------
 chrnum peak_mid peak_name peak_score peak_location gene_name strand isoform isoform_coding_type tss dist_tss
-
+-------------------------------------------------
 chr1	1778750	MACS_peak_51	102.12	INTRON	GNB1	-	GNB1-001	protein_coding	1822495	43745
 
 chr1	1933483	MACS_peak_57	93.87	INTRON	C1orf222	-	C1orf222-007	retained_intron	1935276	1793
@@ -64,11 +65,12 @@ chr1	7259083	MACS_peak_154	60.32	INTRON	CAMTA1	+	CAMTA1-001	protein_coding	68453
 chr1	8031408	MACS_peak_181	750.45	EXON	PARK7	+	PARK7-004	protein_coding	8014351	17057
 
 chr1	8319346	MACS_peak_195	3100	ENHANCER	.	.	.	.	.	.
-
+-------------------------------------------------
 Example2:
 ./peak_tool_multi EXP1.bed EXP2.bed EXP3.bed EXP4.bed > EXP1_EXP2_EXP3_EXP4.genes.txt
 --------------------------------------------------
-
+Output of multi-peak feature
+-------------------------------------------------
 chr1	714304	MACS_peak_2	158.84	INTERGENIC	.	.	.	.	.	.	714017	MACS_peak_1	68.78	-287	.	714039	MACS_peak_1	170.93	-265	.	714023	MACS_peak_1	245.28	-281	.
 
 chr1	769360	MACS_peak_8	421.42	INTERGENIC	.	.	.	.	.	.	769283	MACS_peak_3	55.43	-77	.	769273	MACS_peak_5	154.26	-87	.	769292	MACS_peak_3	71.24	-68	.
@@ -86,7 +88,7 @@ chr1	1003263	MACS_peak_19	71.56	INTERGENIC	.	.	.	.	.	.	1003034	MACS_peak_37	252.
 chr1	1003982	MACS_peak_20	104.28	ENHANCER	.	.	.	.	.	.	1003034	MACS_peak_37	252.84	-948	.	1003088	MACS_peak_54	281.96	-894	.	1003078	MACS_peak_39	643.19	-904	.
 
 chr1	1098334	MACS_peak_23	149.14	INTERGENIC	.	.	.	.	.	.	1098987	MACS_peak_50	185.58	653	.	1098482	MACS_peak_70	130.48	148	.	1098535	MACS_peak_51	138.52	201	.
-
+-------------------------------------------------
 Notes::
 
 a) Make sure you have g++ / clang installed on your system 
