@@ -15,7 +15,7 @@ int main (int argc, char *argv[]){
   string superenhancerFileName="/home/amitra/proj/abhishekNGS/huge_files/human/enhancers/super-enhancers.bed";
   ret=load_enhancers(superenhancerBitmaps,superenhancerFileName);
   if (ret==0){
-    enhancerFileName="enhancers.bed";
+    enhancerFileName="super-enhancers.bed";
     ret=load_enhancers(enhancerBitmaps,enhancerFileName);
   }
 

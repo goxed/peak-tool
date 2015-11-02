@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <x86intrin.h>
+#include <map>
 #define WAITUSER    cerr<<endl<<"press return"; cin.ignore();
 #define X_CHROMOSOME 1000
 #define Y_CHROMOSOME 1001
@@ -165,29 +166,44 @@ inline string get_chr_text(unsigned chrNum){
   return ".";
 }
 
-inline unsigned get_chr_size(unsigned chrNum){
-  string chromSizeFileName="/home/amitra/proj/abhishekNGS/huge_files/human/chrom.hg19.sizes";
-  ifstream chromSizeFile(chromSizeFileName.c_str());
-  if(!chromSizeFile.is_open()) {
-    chromSizeFileName="chrom.hg19.sizes";
-    chromSizeFile.open(chromSizeFileName.c_str());
-    if(!chromSizeFile.is_open()){
-      cerr<<endl<<"Cannot open "<<chromSizeFileName; 
-      return 0;
+unsigned get_chr_size(unsigned chrNum){
+  static bool readChromSizeFile=0;
+  static map <int,int> chromosomeSizeMap;
+  if(readChromSizeFile==0){
+    string chromSizeFileName="/home/amitra/proj/abhishekNGS/huge_files/human/chrom.hg19.sizes";
+    ifstream chromSizeFile(chromSizeFileName.c_str());
+    if(!chromSizeFile.is_open()) {
+      chromSizeFileName="chrom.hg19.sizes";
+      chromSizeFile.open(chromSizeFileName.c_str());
+      if(!chromSizeFile.is_open()){
+	cerr<<endl<<"Cannot open "<<chromSizeFileName; 
+	return 0;
+      }
     }
-  }
-  string line;
-  while(getline(chromSizeFile,line)){
-    stringstream ssLine(line);
-    string s_chrNum, s_chrSize;
-    ssLine>>s_chrNum;
-    ssLine>>s_chrSize;
-    if(get_chr_number(s_chrNum)==chrNum){
+    string line;
+    while(getline(chromSizeFile,line)){
+      stringstream ssLine(line);
+      string s_chrNum, s_chrSize;
+      ssLine>>s_chrNum;
+      ssLine>>s_chrSize;
       stringstream ss_chrSize(s_chrSize);
       unsigned i_chrSize=0;
       ss_chrSize>>i_chrSize;
-      return i_chrSize;
+      chromosomeSizeMap[get_chr_number(s_chrNum)]=i_chrSize;
+//       if(get_chr_number(s_chrNum)==chrNum){
+// 	stringstream ss_chrSize(s_chrSize);
+// 	unsigned i_chrSize=0;
+// 	ss_chrSize>>i_chrSize;
+// 	return i_chrSize;
+//       }
     }
+    //cerr<<endl<<"CHR Size Map Read="<< readChromSizeFile<<"\t"<<chromosomeSizeMap[chrNum]<<"\t"<<chrNum;WAITUSER
+    readChromSizeFile=1;
+    return chromosomeSizeMap[chrNum];
+  }
+  else
+  {
+     return chromosomeSizeMap[chrNum];
   }
   return 0;
 }
@@ -342,6 +358,10 @@ int read_peak_files(vector<string> bedFileNames, vector<bedFilePeak> &peakFiles)
 	    ++countColumns;
 	    //cout<<endl<<element<<"\t"<<countColumns;
 	    bedElements.push_back(element);
+	}
+	if(countColumns==3){
+	  bedElements.push_back(".");
+	  bedElements.push_back(".");
 	}
 	if(bedElements.size()>=5){
 	  string s_chrNum=bedElements[0];
