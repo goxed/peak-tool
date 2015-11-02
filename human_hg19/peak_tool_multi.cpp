@@ -16,7 +16,7 @@ int main (int argc, char *argv[]){
   ret=load_enhancers(superenhancerBitmaps,superenhancerFileName);
   if (ret==0){
     enhancerFileName="super-enhancers.bed";
-    ret=load_enhancers(enhancerBitmaps,enhancerFileName);
+    ret=load_enhancers(superenhancerBitmaps,enhancerFileName);
   }
 
   if(argc<2){
