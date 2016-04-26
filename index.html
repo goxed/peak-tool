@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Peak-tool by goxed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Peak-tool</h1>
+      <h2 class="project-tagline">Tool in c++ to parse the gencode database file and a list of ChIP-Seq peaks in bed format and report detailed promoter / intragenic / enhancer / super-enhancer / intergenic occupancy. The tool can also find neighboring peaks for multiple ChIP-Seq experiments.</h2>
+      <a href="https://github.com/goxed/peak-tool" class="btn">View on GitHub</a>
+      <a href="https://github.com/goxed/peak-tool/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/goxed/peak-tool/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="comments--criticisms--feature-requests-httpswwwbiostarsorgp157346" class="anchor" href="#comments--criticisms--feature-requests-httpswwwbiostarsorgp157346" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Comments / Criticisms / Feature requests: <a href="https://www.biostars.org/p/157346/">https://www.biostars.org/p/157346/</a></em>
+</h3>
+
+<h1>
+<a id="peak-tool-multi" class="anchor" href="#peak-tool-multi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>peak-tool-multi</h1>
+
+<p>Tool to annotate human <strong>hg19</strong> or mouse <strong>mm10</strong> aligned ChIP-Seq peak files. This tool also takes <em>multiple</em> ChIP-Seq peak files from different experiments and finds neighbors of the primary peak file and annotate it.</p>
+
+<p><strong>20GB RAM required on Linux</strong></p>
+
+<p><strong>16GB RAM required on MAC OS X &gt;= 10.9 die to built in memory compression in OSX</strong></p>
+
+<p>This is a tool in c++ to parse the gencode annotation database file and list(s) of ChIP-Seq peaks in bed file format. Report detailed promoter / gene-body / intergenic / enhancer occupancy in human or mouse. Multi peak option reports neighboring peaks in order to elicit co-acting transcription factors. For e.g. With this feature you can correlate your peaks with ENCODE ChIP-Seq data or a related ChIP-Seq data.</p>
+
+<h3>
+<a id="compiling" class="anchor" href="#compiling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compiling</h3>
+
+<p>gunzip gencode.v19.annotation.gtf.gz</p>
+
+<p>gunzip enhancers.bed.gz</p>
+
+<p>make</p>
+
+<h3>
+<a id="running" class="anchor" href="#running" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running</h3>
+
+<p><strong>Example1:</strong></p>
+
+<p><code>./peak_tool_multi ./test.bed &gt; test.genes.txt</code></p>
+
+<p><strong>Example Input in BED format</strong></p>
+
+<ol>
+<li><p>chr1 1778750 1778751 MACS_peak_51 102.12</p></li>
+<li><p>chr1 1933483 1933484 MACS_peak_57 93.87</p></li>
+<li><p>chr1 3446145 3446146 MACS_peak_91 85.75</p></li>
+<li><p>chr1 4003155 4003156 MACS_peak_104 58.09</p></li>
+<li><p>chr1 5787471 5787472 MACS_peak_121 1325.16</p></li>
+<li><p>chr1 6473142 6473143 MACS_peak_138 988.16</p></li>
+<li><p>chr1 7259083 7259084 MACS_peak_154 60.32</p></li>
+<li><p>chr1 8031408 8031409 MACS_peak_181 750.45</p></li>
+<li><p>chr1 8319346 8319347 MACS_peak_195 3100.00</p></li>
+<li><p>chr1 8360245 8360246 MACS_peak_198 261.50</p></li>
+</ol>
+
+<p>The output is in the following format</p>
+
+<h3>
+<a id="chrnum-peak_mid-peak_name-peak_score-peak_location-gene_name-strand-isoform-isoform_coding_type-tss-dist_tss" class="anchor" href="#chrnum-peak_mid-peak_name-peak_score-peak_location-gene_name-strand-isoform-isoform_coding_type-tss-dist_tss" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>chrnum peak_mid peak_name peak_score peak_location gene_name strand isoform isoform_coding_type tss dist_tss</h3>
+
+<ol>
+<li><p>chr1 1778750 MACS_peak_51 102.12 INTRON GNB1 - GNB1-001 protein_coding 1822495 43745</p></li>
+<li><p>chr1 1933483 MACS_peak_57 93.87 INTRON C1orf222 - C1orf222-007 retained_intron 1935276 1793</p></li>
+<li><p>chr1 3446145 MACS_peak_91 85.75 INTRON MEGF6 - MEGF6-001 protein_coding 3448012 1867</p></li>
+<li><p>chr1 4003155 MACS_peak_104 58.09 ENHANCER . . . . . .</p></li>
+<li><p>chr1 5787471 MACS_peak_121 1325.16 INTERGENIC . . . . . .</p></li>
+<li><p>chr1 6473142 MACS_peak_138 988.16 EXON HES2 - HES2-002 protein_coding 6484730 11588</p></li>
+<li><p>chr1 7259083 MACS_peak_154 60.32 INTRON CAMTA1 + CAMTA1-001 protein_coding 6845384 413699</p></li>
+<li><p>chr1 8031408 MACS_peak_181 750.45 EXON PARK7 + PARK7-004 protein_coding 8014351 17057</p></li>
+<li><p>chr1 8319346 MACS_peak_195 3100 ENHANCER . . . . . .</p></li>
+</ol>
+
+<p><strong>Example2:</strong></p>
+
+<p><code>./peak_tool_multi EXP1.bed EXP2.bed EXP3.bed EXP4.bed &gt; EXP1_EXP2_EXP3_EXP4.genes.txt</code></p>
+
+<p><strong>Output of multi-peak feature</strong></p>
+
+<ol>
+<li><p>chr1 714304 MACS_peak_2 158.84 INTERGENIC . . . . . . 714017 MACS_peak_1 68.78 -287 . 714039 MACS_peak_1 170.93 -265 . 714023 MACS_peak_1 245.28 -281 .</p></li>
+<li><p>chr1 769360 MACS_peak_8 421.42 INTERGENIC . . . . . . 769283 MACS_peak_3 55.43 -77 . 769273 MACS_peak_5 154.26 -87 . 769292 MACS_peak_3 71.24 -68 .</p></li>
+<li><p>chr1 840155 MACS_peak_10 96.66 INTERGENIC . . . . . . 840097 MACS_peak_6 165.5 -58 . 840026 MACS_peak_11 57.72 -129 . 840075 MACS_peak_8 134.82 -80 .</p></li>
+<li><p>chr1 840738 MACS_peak_11 137.93 ENHANCER . . . . . . 840097 MACS_peak_6 165.5 -641 . 840026 MACS_peak_11 57.72 -712 . 840075 MACS_peak_8 134.82 -663 .</p></li>
+<li><p>chr1 911680 MACS_peak_15 241.99 PROMOTER C1orf170 - C1orf170-002 retained_intron 912021 341 911740 MACS_peak_20 271.3 60 281 911707 MACS_peak_31 285.65 27 314 911709 MACS_peak_23 251.1 29 312</p></li>
+<li><p>chr1 994706 MACS_peak_18 95.46 ENHANCER . . . . . . 994613 MACS_peak_35 66.76 -93 . 995290 MACS_peak_52 57.49 584 . 994655 MACS_peak_37 61.84 -51 .</p></li>
+<li><p>chr1 1003263 MACS_peak_19 71.56 INTERGENIC . . . . . . 1003034 MACS_peak_37 252.84 -229 . 1003088 MACS_peak_54 281.96 -175 . 1003078 MACS_peak_39 643.19 -185 .</p></li>
+<li><p>chr1 1003982 MACS_peak_20 104.28 ENHANCER . . . . . . 1003034 MACS_peak_37 252.84 -948 . 1003088 MACS_peak_54 281.96 -894 . 1003078 MACS_peak_39 643.19 -904 .</p></li>
+<li><p>chr1 1098334 MACS_peak_23 149.14 INTERGENIC . . . . . . 1098987 MACS_peak_50 185.58 653 . 1098482 MACS_peak_70 130.48 148 . 1098535 MACS_peak_51 138.52 201 .</p></li>
+</ol>
+
+<h3>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes</h3>
+
+<p>a) Make sure you have <strong>g++ / clang</strong> installed on your system</p>
+
+<p>b) Tested with <strong>MACS bed file (Peak summit is preferable)</strong></p>
+
+<p>c) Simplistic assumption of Promoter regions <strong>(-2kb - +0.5kb)</strong> (<em>can be changed in the program</em>)</p>
+
+<p>d) To check multiple peak files (e.g. 1k region, <em>can be changed in the program</em>) and elicit neighboring peaks use <strong>peak_tool_multi</strong> in the multi-ChIP directory.</p>
+
+<p>e) Works perfectly on a Macbook Pro Retina laptop with 16GB RAM and MAC OS X &gt; (10.9.x). The OS efficiently compresses the indexes data-structure in memory.</p>
+
+<h3>
+<a id="linux-specific-notes" class="anchor" href="#linux-specific-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Linux</strong> specific notes</h3>
+
+<p>f) Use ZRAM on a Linux system with 16GB RAM or use a system with** &gt;= 20 GB RAM** to avoid swapping and unnecessary frustrations <a href="http://askubuntu.com/questions/174579/how-do-i-use-zram">http://askubuntu.com/questions/174579/how-do-i-use-zram</a></p>
+
+<p>g) If your Linux system has &lt; 20GB RAM please make sure you have ~30%-50% of your RAM allocated as swap with ZRAM</p>
+
+<p>edit the following zram config file in Ubuntu Linux vim /etc/init/zram-config.conf</p>
+
+<p><code>mem=$(((totalmem * 30/100 / ${NRDEVICES}) * 1024))</code></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/goxed/peak-tool">Peak-tool</a> is maintained by <a href="https://github.com/goxed">goxed</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
