@@ -113,8 +113,7 @@ g) If your Linux system has < 20GB RAM please make sure you have ~30%-50% of you
 
 
 edit the following zram config file in Ubuntu Linux
-vim /etc/init/zram-config.conf
-> mem=$(((totalmem * 30/100 / ${NRDEVICES}) * 1024))
+vim /etc/init/zram-config.conf > mem=$(((totalmem * 30/100 / ${NRDEVICES}) * 1024))
 
 
 
