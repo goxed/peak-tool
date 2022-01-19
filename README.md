@@ -1,4 +1,5 @@
 Comments / Criticisms / Feature requests: https://www.biostars.org/p/157346/
+For enterprise use contact me for details. This software is only for personal use.
 
 #peak-tool-multi 
 Tool to annotate human hg19 or mouse mm10 aligned ChIP-Seq peak files. This tool also takes multiple ChIP-Seq peak files from different experiments and finds neighbors of the primary peak file and annotate it.
